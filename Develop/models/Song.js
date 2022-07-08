@@ -15,17 +15,20 @@ Song.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    duration: {
-      type: DataTypes.FLOAT,
-      allowNull: false,
+    album_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'album',
+        key: 'id',
+      }
     },
-    // album_id: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model: 'album',
-    //     key: 'id',
-    //   },
-    // },
+    artist_id: {
+      type: DataTypes.INTEGER,
+      references: {
+        model: 'artist',
+        key: 'id',
+      }
+    }
   },
   {
     sequelize,
