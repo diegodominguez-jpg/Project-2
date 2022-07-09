@@ -3,15 +3,32 @@ const searchFormHandler = async (event) => {
 
     //const type = document.querySelector('#search-type').value;
     const genre = document.querySelector('#search-genre').value;
+    const container = document.querySelector('.search-results')
+    
     
     if (genre) {
         if (genre == 'all') {
             document.location.replace('/discover'); 
         }
         else {
-            fetch(`/api/search/rap`)
+            fetch(`/api/search/${genre}`, {
+                method: 'GET',
+                mode: 'cors',
+                headers: { 'Content-Type': 'application/json' }
+            })
+            .then(function (response) {
+                return response.json();
+            })
             .then(function (data) {
                 console.log(data)
+                //create for loop and on each loop append an li to the template
+                container.innerHTML = ``
+                
+                for (let i=0; i< data.length; i++) {
+                    const liEl = document.createElement('li');
+                    liEl.textContent = data[i].name
+                    container.append(liEl)
+                }
             })
             
         }
