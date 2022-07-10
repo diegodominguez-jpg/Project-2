@@ -80,3 +80,8 @@ img {
     align-items: center;
     font-size: 24px;
 }
+
+.add-song {
+    background-color: white;
+    border: none;
+}
