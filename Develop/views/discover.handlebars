@@ -16,12 +16,14 @@
     </const>
 </form>
 
+<button id="to-cart">cart</button>
+
 <div class="search-results container-group-row">
     <div>
         <h4>Recovery by Eminem</h4>
         <ul>
         {{#each eminem as |song|}}
-            <li>{{name}}</li>
+            <li>{{name}} <button data-song='{{name}}' class="add-song">+</button></li>
         {{/each}}
         </ul>
     </div>
@@ -29,7 +31,7 @@
         <h4>ASCEND by Illenium</h4>
         <ul>
         {{#each illenium as |song|}}
-            <li>{{name}}</li>
+            <li>{{name}} <button data-song='{{name}}' class="add-song">+</button></li>
         {{/each}}
         </ul>
     </div>
@@ -37,7 +39,7 @@
         <h4>Led Zeppelin IV by Led Zeppelin</h4>
         <ul>
         {{#each ledZep as |song|}}
-            <li>{{name}}</li>
+            <li>{{name}} <button data-song='{{name}}' class="add-song">+</button></li>
         {{/each}}
         </ul>
     </div>

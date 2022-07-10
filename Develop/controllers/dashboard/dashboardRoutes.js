@@ -68,6 +68,7 @@ router.get('/discover', async (req, res) => {
             return each.artist.name == 'Led Zeppelin'
         });
         
+        
         res.render('discover', {
             eminem,
             illenium,
@@ -79,5 +80,15 @@ router.get('/discover', async (req, res) => {
         res.status(500).json(err)
     }
 });
+
+router.get('/cart', async (req, res) => {
+    try {
+        res.render('cart', {
+            logged_in: req.session.logged_in
+        })
+    } catch (err) {
+        res.status(500).json(err)
+    }
+})
 
 module.exports = router
