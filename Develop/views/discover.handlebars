@@ -18,11 +18,13 @@
 
 <button id="to-cart">cart</button>
 
-<div class="search-results container-group-row">
+<p id="message"></p>
+
+<div id="search-results" class="container-group-row">
     <div>
         <h4>Recovery by Eminem</h4>
         <ul>
-        {{#each eminem as |song|}}
+        {{#each eminem as |song|}}  
             <li>{{name}} <button data-song='{{name}}' class="add-song">+</button></li>
         {{/each}}
         </ul>

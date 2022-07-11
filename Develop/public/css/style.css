@@ -85,3 +85,23 @@ img {
     background-color: white;
     border: none;
 }
+
+#message {
+    text-align: center;
+}
+
+#cart-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#cart-list li {
+    list-style: none;
+}
+
+#checkout {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

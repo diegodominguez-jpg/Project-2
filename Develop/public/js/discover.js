@@ -1,9 +1,11 @@
+const msg = document.querySelector('#message')
+
 const searchFormHandler = async (event) => {
     event.preventDefault();
 
     //const type = document.querySelector('#search-type').value;
     const genre = document.querySelector('#search-genre').value;
-    const container = document.querySelector('.search-results')
+    const container = document.querySelector('#search-results')
     
     
     if (genre) {
@@ -17,24 +19,29 @@ const searchFormHandler = async (event) => {
                 headers: { 'Content-Type': 'application/json' }
             })
             .then(function (response) {
+                container.innerHTML = ``
                 return response.json();
             })
             .then(function (data) {
-                //create for loop and on each loop append an li to the template
-                container.innerHTML = ``
-                console.log(data)
+                const divEl = document.createElement('div');
                 for (let i=0; i< data.length; i++) {
-                    if (i = 0) {
+                    if (i === 0) {
                         const titleEl = document.createElement('h3')
                         titleEl.textContent = `Songs by ${data[i].artist.name}`
-                        container.append(titleEl)
+                        divEl.append(titleEl)
                     }
                     const liEl = document.createElement('li');
-                    liEl.textContent = data[i].name
-                    container.append(liEl)
+                    const btnEl = document.createElement('button');
+                    btnEl.setAttribute('data-song', `${data[i].name}`);
+                    btnEl.setAttribute('class', 'add-song');
+                    btnEl.textContent = '+';
+                    btnEl.addEventListener('click', addToCart)
+                    liEl.textContent = data[i].name;
+                    liEl.append(btnEl)
+                    divEl.append(liEl)
                 }
-            })
-            
+                container.append(divEl)
+            });
         }
     }
 };
@@ -43,9 +50,10 @@ const cart = JSON.parse(localStorage.getItem('cart')) || []
 const addToCart = async (e) => {
     if (cart.indexOf(e.target.dataset.song) === -1) {
         cart.push(e.target.dataset.song)
+        msg.textContent = `Successfully added '${e.target.dataset.song}' to cart`
     }
     else {
-        alert('This song is already in your cart')
+        msg.textContent = 'This song is already in your cart, proceed to checkout to add this song to your playlist'
     }
 }
 
