@@ -9,6 +9,12 @@ router.get('/playlist', withAuth, async (req, res) => {
             where: {
                 user_id: req.session.user_id,
             },
+            include: [
+                {
+                    model: Song,
+                    attributes: ['name']
+                }
+            ]
         });
         const playlist = playlistData.map((song) => song.get({ plain: true}));//chang users to post
         res.status(200).json(playlist)
@@ -50,10 +56,18 @@ router.post('/checkout', withAuth, async (req, res) => {
     try {
         const data = []
         for (let i =0; i< req.body.cart.length; i++) {
-            const song_id = req.body.cart[i]
+            const song_name = req.body.cart[i]
+            const song = await Song.findOne({
+                attributes: ['id'],
+                where: {
+                    name: song_name
+                }
+            });
+            const song_id = song.get({ plain: true}).id;
             const user_id = req.session.user_id
             data.push({song_id, user_id})
         }
+        console.log(data)
         const response = await Playlist.bulkCreate(data)
         res.status(200).json(response)
     } catch (err) {
@@ -61,13 +75,13 @@ router.post('/checkout', withAuth, async (req, res) => {
     }
 });
 
-router.delete('/delete', withAuth, async (req, res) => {
+router.delete('/:id', withAuth, async (req, res) => {
     try {
-        console.log(req)
+        console.log(req.params.id)
       const playlistData = await Playlist.destroy({
         where: {
             user_id: req.session.user_id,
-            song_id: req.body.song_name
+            song_id: req.params.id
         },
       });
       
