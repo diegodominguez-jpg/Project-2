@@ -1,0 +1,16 @@
+<div class="container">
+    {{#if playlist}}
+    <ul>
+    {{#each playlist as | song |}}
+        <li>{{song.name}}</li>
+    {{/each}}
+    </ul>
+    {{else}}
+    <div class="container-group-col" id="no-playlist">
+        <p>On no! It looks like you don't have any songs on your playlist. Create a custom playlist 
+            by pressing the button below
+        </p>
+        <a href="/dashboard/discover">+ Add Music</a>
+    </div>
+    {{/if}}
+</div>
