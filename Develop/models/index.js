@@ -40,7 +40,14 @@ User.hasMany(Playlist, {
   onDelete: 'CASCADE'
 });
 
+Playlist.belongsTo(Song, {
+  foreignKey: 'song_id'
+});
 
+Song.hasMany(Playlist, {
+  foreignKey: 'song_id',
+  onDelete: 'CASCADE'
+});
 
 
 

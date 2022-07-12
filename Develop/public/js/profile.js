@@ -1,8 +1,9 @@
 //create an edit button that when you press on it, x's will appear next to all the song names
 //clicking on an x will remove it from playlist
 const ulEl = document.querySelector('#playlist');
+const editBtn = document.querySelector('#edit');
 
-const editPlaylist = async () => {
+const editPlaylist = async () => { //now need to pass id into x button instead of name
     fetch('/api/search/playlist', {
         method: 'GET',
         mode: 'cors',
@@ -16,17 +17,16 @@ const editPlaylist = async () => {
         for (let i = 0; i < data.length; i++) {
             const liEl = document.createElement('li')
             liEl.innerHTML = `
-            <button class='delete' onclick='removeSong("${data[i].song_id}")'>X</button> ${data[i].song_id} 
+            <button class='delete' onclick='removeSong(${data[i].song_id})'>X</button> ${data[i].song.name} 
             `
             ulEl.append(liEl)
         }
     })
 }
 
-const removeSong = async (e) => {
-    const remove = await fetch('/api/search/delete', {
+const removeSong = async (id) => {
+    const remove = await fetch(`/api/search/${id}`, {
         method: 'DELETE',
-        body: JSON.stringify({song_name: e}) //Not sure if we can pass a body on delete method, might need to send over url
     })
 
     if (remove.ok) {
@@ -36,13 +36,6 @@ const removeSong = async (e) => {
     }
 }
 
-
-
-document
-  .querySelector('#edit')
-  .addEventListener('click', editPlaylist)
-
-// const deleteBtn = document.querySelectorAll('.delete')
-// deleteBtn.forEach((btn) => {
-//     btn.addEventListener('click', removeSong)
-// })
+if (editBtn) {
+    editBtn.addEventListener('click', editPlaylist)
+}

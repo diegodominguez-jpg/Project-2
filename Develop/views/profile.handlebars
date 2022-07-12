@@ -3,7 +3,7 @@
     <h3>My Playlist:</h3>
     <ul id="playlist">
     {{#each playlist as | song |}}
-        <li>{{song.song_id}}</li>
+        <li>{{song.song.name}}</li>
     {{/each}}
     </ul>
     <button id="edit">edit playlist</button>
