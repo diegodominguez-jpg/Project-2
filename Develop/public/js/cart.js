@@ -30,6 +30,8 @@ const checkout = async () => {
     });
 
     if (response.ok) {
+        cart.length = 0;
+        localStorage.setItem('cart', JSON.stringify(cart));
         document.location.replace('/dashboard/profile');
     } else {
         alert('Failed to checkout');

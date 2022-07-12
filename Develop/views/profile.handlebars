@@ -1,10 +1,12 @@
 <div class="container">
     {{#if playlist}}
-    <ul>
+    <h3>My Playlist:</h3>
+    <ul id="playlist">
     {{#each playlist as | song |}}
-        <li>{{song.name}}</li>
+        <li>{{song.song_id}}</li>
     {{/each}}
     </ul>
+    <button id="edit">edit playlist</button>
     {{else}}
     <div class="container-group-col" id="no-playlist">
         <p>On no! It looks like you don't have any songs on your playlist. Create a custom playlist 
@@ -14,3 +16,5 @@
     </div>
     {{/if}}
 </div>
+
+<script src="/js/profile.js"></script>

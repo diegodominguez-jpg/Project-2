@@ -19,10 +19,10 @@ const searchFormHandler = async (event) => {
                 headers: { 'Content-Type': 'application/json' }
             })
             .then(function (response) {
-                container.innerHTML = ``
                 return response.json();
             })
             .then(function (data) {
+                container.innerHTML = ``
                 const divEl = document.createElement('div');
                 for (let i=0; i< data.length; i++) {
                     if (i === 0) {

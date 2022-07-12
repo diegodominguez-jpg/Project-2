@@ -105,3 +105,13 @@ img {
     flex-direction: column;
     align-items: center;
 }
+
+#playlist li {
+    list-style: none;
+}
+
+.delete {
+    border: none;
+    background-color: white;
+    color: red;
+}
