@@ -23,11 +23,6 @@ router.get('/profile', withAuth, async (req, res) => {
             where: {
                 user_id: req.session.user_id,
             },
-            include: [
-            {
-                model: Song
-            }
-        ],
         });
 
         const playlist = playlistData.map((song) => song.get({ plain: true}));//chang users to post
