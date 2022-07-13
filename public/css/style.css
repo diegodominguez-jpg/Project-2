@@ -7,6 +7,12 @@ body {
   color: white;
 }
 
+main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 header {
     background-color: black;
     color: white;
@@ -49,16 +55,10 @@ a {
 }
 
 .container {
-    width: 100%;
     margin-top: 40px;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 10px;
-}
-
-.dashboard-container {
-     align-items: center;
     gap: 10px;
 }
 
@@ -99,7 +99,8 @@ a {
 }
 
 .add-song {
-    background-color: white;
+    background-color: black;
+    color: greenyellow;
     border: none;
 }
 
@@ -129,12 +130,12 @@ a {
 
 .delete {
     border: none;
-    background-color: white;
+    background-color: black;
     color: red;
 }
 
 .deleted {
-    color: rgb(0, 0, 0, 0.5)
+    color: red
 }
 
 #empty-cart {
@@ -144,4 +145,10 @@ a {
 
 #to-cart {
     margin-left: 50%;
+}
+
+.card {
+    padding: 20px;
+    background-color: black;
+    border-radius: 10px;
 }

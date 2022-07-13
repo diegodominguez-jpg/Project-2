@@ -1,11 +1,6 @@
+<div style="margin-top: 20px;">
 <form id="search-form">
     <div class="container-group-row">
-       <!-- <label for="search">Filter results:</label>
-        <select name="search" id="search-type">
-            <option value="artist">Artist</option>
-            <option value="album">Album</option>
-            <option value="song">Song</option>
-        </select> -->
         <select name="genre" id="search-genre">
             <option value="all">All</option>
             <option value="rap">Rap</option> 
@@ -15,9 +10,9 @@
         <button>Search</button>
     </div>
 </form>
-<button id="to-cart">cart</button>
-<div id="search-results" class="container-group-row">
-    <div>
+
+<div id="search-results" class="container-group-row" style="gap: 10px; margin-top: 40px;">
+    <div class="card">
         <h4>Recovery by Eminem</h4>
         <ul>
         {{#each eminem as |song|}}  
@@ -25,7 +20,7 @@
         {{/each}}
         </ul>
     </div>
-    <div>
+    <div class="card">
         <h4>ASCEND by Illenium</h4>
         <ul>
         {{#each illenium as |song|}}
@@ -33,7 +28,7 @@
         {{/each}}
         </ul>
     </div>
-    <div>
+    <div class="card">
         <h4>Led Zeppelin IV by Led Zeppelin</h4>
         <ul>
         {{#each ledZep as |song|}}
@@ -44,5 +39,5 @@
 </div>
 
 <p id="message"></p>
-
+</div>
 <script src="/js/discover.js"></script>

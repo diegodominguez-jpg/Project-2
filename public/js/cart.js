@@ -6,7 +6,7 @@ const cart = JSON.parse(localStorage.getItem('cart')) || []
 if (cart.length > 0) {
     let total = 0
     for (let i=0;i<cart.length;i++) {
-        const liEl = document.createElement('li');
+        const liEl = document.createElement('span');
         liEl.textContent = cart[i]
         cartList.append(liEl)
         total += 0.99

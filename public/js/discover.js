@@ -24,6 +24,7 @@ const searchFormHandler = async (event) => {
             .then(function (data) {
                 container.innerHTML = ``
                 const divEl = document.createElement('div');
+                divEl.setAttribute('class', 'card')
                 for (let i=0; i< data.length; i++) {
                     if (i === 0) {
                         const titleEl = document.createElement('h3')
@@ -48,27 +49,20 @@ const searchFormHandler = async (event) => {
 
 const cart = JSON.parse(localStorage.getItem('cart')) || []
 const addToCart = async (e) => {
+    msg.setAttribute('class', 'card')
     if (cart.indexOf(e.target.dataset.song) === -1) {
         cart.push(e.target.dataset.song)
         msg.textContent = `added '${e.target.dataset.song}' to cart`
+        localStorage.setItem('cart', JSON.stringify(cart));
     }
     else {
         msg.textContent = 'This song is already in your cart, proceed to checkout to add this song to your playlist'
     }
 }
 
-const toCart = async () => {
-    localStorage.setItem('cart', JSON.stringify(cart));
-    document.location.replace('/dashboard/cart'); 
-}
-
 document
   .querySelector('#search-form')
   .addEventListener('submit', searchFormHandler);
-
-document
-  .querySelector('#to-cart')
-  .addEventListener('click', toCart)
 
 const addBtnEl = document.querySelectorAll('.add-song')
 addBtnEl.forEach((btn) => {
