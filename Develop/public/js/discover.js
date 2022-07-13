@@ -50,7 +50,7 @@ const cart = JSON.parse(localStorage.getItem('cart')) || []
 const addToCart = async (e) => {
     if (cart.indexOf(e.target.dataset.song) === -1) {
         cart.push(e.target.dataset.song)
-        msg.textContent = `Successfully added '${e.target.dataset.song}' to cart`
+        msg.textContent = `added '${e.target.dataset.song}' to cart`
     }
     else {
         msg.textContent = 'This song is already in your cart, proceed to checkout to add this song to your playlist'

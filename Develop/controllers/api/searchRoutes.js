@@ -67,7 +67,6 @@ router.post('/checkout', withAuth, async (req, res) => {
             const user_id = req.session.user_id
             data.push({song_id, user_id})
         }
-        console.log(data)
         const response = await Playlist.bulkCreate(data)
         res.status(200).json(response)
     } catch (err) {
