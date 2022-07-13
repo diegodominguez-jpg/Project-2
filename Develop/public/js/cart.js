@@ -11,11 +11,12 @@ if (cart.length > 0) {
         cartList.append(liEl)
         total += 0.99
     }
-    price.innerHTML = total
+    price.innerHTML = Number(total.toFixed(2))
 }
 else {
     container.innerHTML = ``
     const pEl = document.createElement('p')
+    pEl.setAttribute('id', 'empty-cart')
     pEl.innerHTML = `
     Your cart is empty! Visit <a href='/dashboard/discover'>discovery</a> to search for songs to add to your playlist
     `

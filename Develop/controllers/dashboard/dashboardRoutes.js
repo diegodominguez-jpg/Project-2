@@ -58,7 +58,10 @@ router.get('/discover', async (req, res) => {
             ]
         });
         
+        
         const song = musicData.map((song) => song.get({ plain: true}));
+        console.log(song)
+
         const eminem = song.filter((each) => {
             return each.artist.name == 'Eminem'
         });
@@ -68,7 +71,6 @@ router.get('/discover', async (req, res) => {
         const ledZep = song.filter((each) => {
             return each.artist.name == 'Led Zeppelin'
         });
-        
         
         res.render('discover', {
             eminem,

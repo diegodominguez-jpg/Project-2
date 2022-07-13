@@ -3,13 +3,27 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+  background-image: url(../img/background.png);
+  color: white;
 }
 
 header {
-    background-color: rgb(0, 158, 193);
+    background-color: black;
+    color: white;
+    display: flex;
+    justify-content:space-around;
+}
+
+header nav {
     display: flex;
     justify-content: center;
-    
+    align-items: center;
+    gap: 15px;
+}
+
+header nav a {
+    color: white;
+    text-decoration: none;
 }
 
 input {
@@ -22,8 +36,16 @@ textarea:focus, input:focus {
 }
 
 img {
-    max-width: 25%;
+    max-width: 20%;
     max-height:fit-content;
+}
+
+label {
+    color: white;
+}
+
+a {
+    color: white;
 }
 
 .container {
@@ -36,11 +58,7 @@ img {
 }
 
 .dashboard-container {
-    width: 100%;
-    margin-top: 40px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+     align-items: center;
     gap: 10px;
 }
 
@@ -62,7 +80,6 @@ img {
     align-items: center;
     text-decoration: none;
     color: black;
-    
 }
 
 #container-submit {
@@ -76,7 +93,7 @@ img {
 }
 
 #no-playlist {
-    width: 25%;
+    width: 40%;
     align-items: center;
     font-size: 24px;
 }
@@ -114,4 +131,17 @@ img {
     border: none;
     background-color: white;
     color: red;
+}
+
+.deleted {
+    color: rgb(0, 0, 0, 0.5)
+}
+
+#empty-cart {
+    text-align: center;
+    font-size: 24px;
+}
+
+#to-cart {
+    margin-left: 50%;
 }

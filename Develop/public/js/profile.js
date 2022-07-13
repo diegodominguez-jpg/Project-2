@@ -3,7 +3,7 @@
 const ulEl = document.querySelector('#playlist');
 const editBtn = document.querySelector('#edit');
 
-const editPlaylist = async () => { //now need to pass id into x button instead of name
+const editPlaylist = async () => { 
     fetch('/api/search/playlist', {
         method: 'GET',
         mode: 'cors',
@@ -13,9 +13,12 @@ const editPlaylist = async () => { //now need to pass id into x button instead o
         return response.json();
     })
     .then(function (data) {
+        editBtn.textContent = 'Done'
+        editBtn.addEventListener('click', doneEdit)
         ulEl.innerHTML = ``
         for (let i = 0; i < data.length; i++) {
             const liEl = document.createElement('li')
+            liEl.setAttribute('id', `${data[i].song_id}`)
             liEl.innerHTML = `
             <button class='delete' onclick='removeSong(${data[i].song_id})'>X</button> ${data[i].song.name} 
             `
@@ -25,15 +28,21 @@ const editPlaylist = async () => { //now need to pass id into x button instead o
 }
 
 const removeSong = async (id) => {
+    const targetLi = document.getElementById(id)
+    targetLi.setAttribute('class', 'deleted')
     const remove = await fetch(`/api/search/${id}`, {
         method: 'DELETE',
     })
 
     if (remove.ok) {
-        console.log('yay')
+        console.log(this)
     } else {
         console.log('sad')
     }
+}
+
+const doneEdit = async () => {
+    document.location.replace('/dashboard/profile'); 
 }
 
 if (editBtn) {

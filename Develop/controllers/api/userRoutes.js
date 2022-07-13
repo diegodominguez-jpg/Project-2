@@ -3,7 +3,6 @@ const { User } = require('../../models');
 
 router.post('/', async (req, res) => {
   try {
-    console.log(req.body)
     const userData = await User.create(req.body);
     
     req.session.save(() => {
@@ -50,7 +49,6 @@ router.post('/login', async (req, res) => {
 });
 
 router.post('/logout', (req, res) => {
-
   if (req.session.logged_in) {
     req.session.destroy(() => {
       res.status(204).end();
